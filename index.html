@@ -293,12 +293,23 @@
   .stage-btn .sl{ font-family:var(--mono); font-size:0.76rem; letter-spacing:0.06em; color:var(--ink); margin-top:0.25rem; font-weight:600; text-transform:uppercase; }
 
   .stage-detail{
-    margin-top:1.8rem; padding:1.6rem 1.8rem; background:var(--paper-2); border-left:2px solid var(--gold);
-    min-height:5.5rem; display:flex; align-items:center;
+    margin-top:1.8rem; padding:1.8rem 2rem; background:var(--paper-2); border-left:2px solid var(--gold);
+    min-height:8rem;
   }
   .stage-detail .sd-inner{ transition:opacity .25s; }
-  .stage-detail h4{ font-family:var(--serif); font-size:1.2rem; color:var(--ink); }
-  .stage-detail p{ margin-top:0.4rem; font-size:0.92rem; color:var(--text-mute); max-width:54ch; }
+  .sd-cols{ display:flex; gap:2.5rem; flex-wrap:wrap; }
+  .sd-main{ flex:1 1 340px; }
+  .sd-gate{ flex:0 1 280px; padding-left:2rem; border-left:1px solid var(--line); }
+  .stage-detail h4{ font-family:var(--serif); font-size:1.3rem; color:var(--ink); font-weight:600; }
+  .sd-lead{ margin-top:0.4rem; font-size:0.94rem; color:var(--text-mute); max-width:52ch; }
+  .sd-block{ margin-top:1.1rem; }
+  .sd-label{ font-family:var(--mono); font-size:0.66rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold); display:block; margin-bottom:0.55rem; }
+  .sd-label-gate{ color:var(--teal); }
+  .sd-list{ display:flex; flex-direction:column; gap:0.4rem; }
+  .sd-list li{ font-size:0.88rem; color:var(--text-dark); padding-left:1rem; position:relative; }
+  .sd-list li::before{ content:'→'; position:absolute; left:0; color:var(--gold); font-size:0.8rem; }
+  .sd-gate-list li::before{ content:'✓'; color:var(--teal); }
+  @media (max-width:700px){ .sd-gate{ padding-left:0; border-left:none; border-top:1px solid var(--line); padding-top:1.2rem; } }
 
   .pipe-foot{ margin-top:2.6rem; padding-top:1.6rem; border-top:1px solid var(--line); display:flex; flex-wrap:wrap; gap:2rem; }
   .pipe-foot > *{ flex:1 1 320px; }
@@ -635,27 +646,33 @@
           <span class="pl" data-i18n="part.p1.label">University</span>
           <h3 data-i18n="part.p1.name">Academic Ecosystem</h3>
           <ul>
-            <li data-i18n="part.p1.i1">Founder sourcing & early exposure</li>
-            <li data-i18n="part.p1.i2">Academic ecosystem access</li>
-            <li data-i18n="part.p1.i3">No program control or decision rights</li>
+            <li data-i18n="part.p1.i1">Design and co-deliver incubation or entrepreneurship programs for students and alumni</li>
+            <li data-i18n="part.p1.i2">Serve as mentor and coach for university-affiliated startups and early-stage ventures</li>
+            <li data-i18n="part.p1.i3">Run structured ideation and validation bootcamps within campus environments</li>
+            <li data-i18n="part.p1.i4">Source and pipeline high-potential founders from academic ecosystems into VAXA Launchpad</li>
+            <li data-i18n="part.p1.i5">Provide guest lectures, workshops, and curriculum input on venture building and startup practice</li>
           </ul>
         </div>
         <div class="partner tilt reveal reveal-2">
           <span class="pl" data-i18n="part.p2.label">Corporate</span>
           <h3 data-i18n="part.p2.name">Strategic Partners</h3>
           <ul>
-            <li data-i18n="part.p2.i1">Capability contribution — product, market, ops</li>
-            <li data-i18n="part.p2.i2">Market access & pilot opportunities</li>
-            <li data-i18n="part.p2.i3">Strategic execution support</li>
+            <li data-i18n="part.p2.i1">Connect corporations with relevant startups that offer solutions to specific business problems — without the cost of building in-house</li>
+            <li data-i18n="part.p2.i2">Design CSR-driven entrepreneurship programs that create measurable community and business impact</li>
+            <li data-i18n="part.p2.i3">Facilitate open innovation: corporations bring real challenges, startups bring fresh solutions</li>
+            <li data-i18n="part.p2.i4">Pilot testing ground — early-stage startups get corporate clients, corporates get cost-efficient R&D</li>
+            <li data-i18n="part.p2.i5">Co-brand and sponsor entrepreneurship initiatives aligned with corporate values and ESG goals</li>
           </ul>
         </div>
         <div class="partner tilt reveal reveal-3">
           <span class="pl" data-i18n="part.p3.label">Investment</span>
           <h3 data-i18n="part.p3.name">Capital Partners</h3>
           <ul>
-            <li data-i18n="part.p3.i1">Capital access</li>
-            <li data-i18n="part.p3.i2">Growth & scaling guidance</li>
-            <li data-i18n="part.p3.i3">Follow-on funding opportunities</li>
+            <li data-i18n="part.p3.i1">Scout and pre-screen startups that match investor thesis, sector focus, and stage criteria</li>
+            <li data-i18n="part.p3.i2">Deliver investment-ready founders — validated, mentored, and de-risked through the VAXA pipeline</li>
+            <li data-i18n="part.p3.i3">Provide co-investment intelligence: deal flow from Tier 2 cities often missed by Jakarta-based VCs</li>
+            <li data-i18n="part.p3.i4">Structure grant or soft-funding programs in partnership with VAXA for pre-seed stage ventures</li>
+            <li data-i18n="part.p3.i5">Access a curated alumni network for portfolio support, advisory roles, and follow-on opportunities</li>
           </ul>
         </div>
       </div>
@@ -956,11 +973,11 @@ function initTilt(){
 
 /* ====== INTERACTIVE: pipeline stages ====== */
 const PIPE_STAGES = [
-  {nameKey:'pipe.st1.name', descKey:'pipe.st1.desc'},
-  {nameKey:'pipe.st2.name', descKey:'pipe.st2.desc'},
-  {nameKey:'pipe.st3.name', descKey:'pipe.st3.desc'},
-  {nameKey:'pipe.st4.name', descKey:'pipe.st4.desc'},
-  {nameKey:'pipe.st5.name', descKey:'pipe.st5.desc'},
+  {nameKey:'pipe.st1.name', descKey:'pipe.st1.desc', doKey:'pipe.st1.do', gateKey:'pipe.st1.gate'},
+  {nameKey:'pipe.st2.name', descKey:'pipe.st2.desc', doKey:'pipe.st2.do', gateKey:'pipe.st2.gate'},
+  {nameKey:'pipe.st3.name', descKey:'pipe.st3.desc', doKey:'pipe.st3.do', gateKey:'pipe.st3.gate'},
+  {nameKey:'pipe.st4.name', descKey:'pipe.st4.desc', doKey:'pipe.st4.do', gateKey:'pipe.st4.gate'},
+  {nameKey:'pipe.st5.name', descKey:'pipe.st5.desc', doKey:'pipe.st5.do', gateKey:'pipe.st5.gate'},
 ];
 let activePipeStage = 0;
 function setPipeStage(i, lang){
@@ -970,9 +987,29 @@ function setPipeStage(i, lang){
   const detail = document.getElementById('stageDetail');
   const st = PIPE_STAGES[i];
   const L = lang || currentLang;
+  const doItems = I18N[st.doKey][L].split('|').map(s=>`<li>${s.trim()}</li>`).join('');
+  const gateItems = I18N[st.gateKey][L].split('|').map(s=>`<li>${s.trim()}</li>`).join('');
   detail.style.opacity = 0;
   setTimeout(()=>{
-    detail.innerHTML = `<h4>${I18N[st.nameKey][L]}</h4><p>${I18N[st.descKey][L]}</p>`;
+    detail.innerHTML = `
+      <div class="sd-cols">
+        <div class="sd-main">
+          <h4>${I18N[st.nameKey][L]}</h4>
+          <p class="sd-lead">${I18N[st.descKey][L]}</p>
+          <div class="sd-block">
+            <span class="sd-label" data-lbl-do="${L}"></span>
+            <ul class="sd-list">${doItems}</ul>
+          </div>
+        </div>
+        <div class="sd-gate">
+          <span class="sd-label sd-label-gate" data-lbl-gate="${L}"></span>
+          <ul class="sd-list sd-gate-list">${gateItems}</ul>
+        </div>
+      </div>`;
+    const ldo = detail.querySelector('[data-lbl-do]');
+    const lgate = detail.querySelector('[data-lbl-gate]');
+    if(ldo) ldo.textContent = I18N['pipe.lbl.do'][L];
+    if(lgate) lgate.textContent = I18N['pipe.lbl.gate'][L];
     detail.style.opacity = 1;
   }, 150);
 }
@@ -1128,6 +1165,24 @@ const I18N = {
   "pipe.st4.desc": {en:"Market entry, repeat usage or revenue.", id:"Masuk pasar, penggunaan berulang atau pendapatan."},
   "pipe.st5.name": {en:"Scale", id:"Scale"},
   "pipe.st5.desc": {en:"Growth & expansion, institutional readiness.", id:"Pertumbuhan & ekspansi, kesiapan institusional."},
+  "pipe.lbl.do": {en:"WHAT WE DO AT THIS STAGE", id:"APA YANG KAMI LAKUKAN"},
+  "pipe.lbl.gate": {en:"GATE CRITERIA", id:"KRITERIA LULUS"},
+
+  "pipe.st1.do": {en:"Deep-dive session to explore founder's background, motivations, and personal commitment|Problem identification workshops to map real pain points worth solving|Market landscape scan to assess demand and competition|Founder profile assessment using VAXA's Entrepreneurial Potential Assessment (EPA)|Co-ideation sessions to sharpen the problem statement", id:"Sesi mendalam untuk menggali latar belakang, motivasi, dan komitmen founder|Workshop identifikasi masalah untuk memetakan pain point nyata yang layak dipecahkan|Pemindaian lanskap pasar untuk menilai permintaan dan kompetisi|Penilaian profil founder menggunakan Entrepreneurial Potential Assessment (EPA) VAXA|Sesi co-ideation untuk mempertajam problem statement"},
+  "pipe.st1.gate": {en:"Clear, specific problem statement defined|Evidence that the problem affects a real market segment|Founder demonstrates genuine commitment and capacity|Minimum score met on EPA dimensions|Team or solo readiness assessed", id:"Problem statement yang jelas dan spesifik|Bukti bahwa masalah mempengaruhi segmen pasar nyata|Founder menunjukkan komitmen dan kapasitas yang genuine|Skor minimum terpenuhi pada dimensi EPA|Kesiapan tim atau individu dinilai"},
+
+  "pipe.st2.do": {en:"Customer discovery coaching — structured interviews with 20+ target users|Problem-Solution Fit workshop using VAXA's validation framework|Business model canvas development and stress-testing|Competitive analysis and differentiation mapping|Assumption mapping and prioritized testing plan|Early pitch rehearsal to sharpen the core narrative", id:"Coaching customer discovery — wawancara terstruktur dengan 20+ target pengguna|Workshop Problem-Solution Fit menggunakan framework validasi VAXA|Pengembangan business model canvas dan stress-testing|Analisis kompetitif dan pemetaan diferensiasi|Pemetaan asumsi dan rencana pengujian terprioritas|Latihan pitch awal untuk mempertajam narasi inti"},
+  "pipe.st2.gate": {en:"Minimum 20 customer discovery interviews completed|Problem-solution fit confirmed by target users|Business model with a viable revenue hypothesis|Core assumptions tested with real-world evidence|Founder can articulate the value proposition clearly", id:"Minimal 20 wawancara customer discovery selesai|Problem-solution fit dikonfirmasi oleh target pengguna|Business model dengan hipotesis pendapatan yang layak|Asumsi inti diuji dengan bukti nyata|Founder dapat mengartikulasikan value proposition dengan jelas"},
+
+  "pipe.st3.do": {en:"Prototype sprint planning and MVP scoping — build only what's needed to test|Product feedback loops with real users, not assumptions|Go-to-Market strategy development: channels, messaging, early adopters|Legal and operational setup guidance (PT/CV, IP, trademarks)|Financial model: unit economics, burn rate, runway planning|Weekly check-ins with VAXA mentors and technical advisors", id:"Perencanaan sprint prototipe dan scoping MVP — bangun hanya yang diperlukan untuk pengujian|Feedback loop produk dengan pengguna nyata, bukan asumsi|Pengembangan strategi Go-to-Market: channel, pesan, early adopters|Panduan legal dan operasional (PT/CV, IP, merek dagang)|Model keuangan: unit economics, burn rate, perencanaan runway|Check-in mingguan dengan mentor dan advisor teknis VAXA"},
+  "pipe.st3.gate": {en:"Functional prototype or MVP delivered and tested|At least 3 iterative feedback cycles completed|Initial traction signal — waitlist, LOI, or paying pilot users|Unit economics baseline established|Go-to-Market plan validated with early adopter feedback", id:"Prototipe atau MVP fungsional selesai dan diuji|Minimal 3 siklus feedback iteratif selesai|Sinyal traksi awal — waitlist, LOI, atau pengguna pilot berbayar|Baseline unit economics ditetapkan|Rencana Go-to-Market divalidasi dengan feedback early adopter"},
+
+  "pipe.st4.do": {en:"Market launch strategy execution — sequenced rollout plan|Growth hacking experiments: A/B testing, channel optimization|Community building and founder brand positioning|Partnerships and distribution channel development|Revenue model refinement based on real transaction data|Investor-readiness preparation: deck, data room, pitch coaching|Introduction to VAXA's investor and partner network", id:"Eksekusi strategi peluncuran pasar — rencana rollout bertahap|Eksperimen growth hacking: A/B testing, optimasi channel|Pembangunan komunitas dan positioning brand founder|Pengembangan kemitraan dan channel distribusi|Penyempurnaan model pendapatan berdasarkan data transaksi nyata|Persiapan investor-readiness: deck, data room, pitch coaching|Introduksi ke jaringan investor dan mitra VAXA"},
+  "pipe.st4.gate": {en:"Consistent month-over-month revenue or user growth|Repeat usage or retention metric above benchmark|Validated sales or distribution channel established|Financial model updated with 6–12 month projections|Founder and team capacity assessed for scale readiness", id:"Pertumbuhan pendapatan atau pengguna konsisten bulan ke bulan|Metrik penggunaan berulang atau retensi di atas benchmark|Channel penjualan atau distribusi tervalidasi|Model keuangan diperbarui dengan proyeksi 6–12 bulan|Kapasitas founder dan tim dinilai untuk kesiapan skala"},
+
+  "pipe.st5.do": {en:"Growth strategy design: geographic expansion, new segments, product extension|Fundraising strategy and investor matching via VAXA's network|Organizational development — hiring plans, culture, and systems|Strategic partnership brokering with corporates and institutions|Advanced financial modelling: Series A readiness, cap table management|Access to VAXA Ascend — the post-Launchpad scale-up program|Alumni network integration and continued VAXA ecosystem access", id:"Desain strategi pertumbuhan: ekspansi geografis, segmen baru, ekstensi produk|Strategi fundraising dan pencocokan investor melalui jaringan VAXA|Pengembangan organisasi — rencana hiring, budaya, dan sistem|Brokering kemitraan strategis dengan korporasi dan institusi|Pemodelan keuangan lanjutan: kesiapan Series A, manajemen cap table|Akses ke VAXA Ascend — program scale-up pasca-Launchpad|Integrasi jaringan alumni dan akses ekosistem VAXA berkelanjutan"},
+  "pipe.st5.gate": {en:"Scalable business model with defensible margins proven|Institutional investment secured or pipeline clearly established|Team infrastructure capable of supporting 10x growth|Product-market fit score validated across multiple segments|Accepted into VAXA Ascend or handed to partner investors", id:"Business model yang dapat diskalakan dengan margin defensif yang terbukti|Investasi institusional dijamin atau pipeline jelas terbentuk|Infrastruktur tim mampu mendukung pertumbuhan 10x|Skor product-market fit divalidasi di berbagai segmen|Diterima di VAXA Ascend atau diserahkan ke investor mitra"},
+
   "pipe.foot1": {en:"\"VAXA will not validate what cannot be built, and will not accelerate what it did not validate.\"", id:"\"VAXA tidak akan memvalidasi apa yang tidak bisa dibangun, dan tidak akan mengakselerasi apa yang belum divalidasi.\""},
   "pipe.foot2": {en:"Launchpad builds ventures, from pre-idea to early traction. Ascend scales the ones that prove they're ready — with investment and market-expansion readiness as the goal.", id:"Launchpad membangun venture, dari pra-ide hingga traksi awal. Ascend men-scale yang terbukti siap — dengan kesiapan investasi dan ekspansi pasar sebagai tujuan."},
   "pipe.cta1.label": {en:"SIGNATURE PROGRAM", id:"PROGRAM UNGGULAN"},
@@ -1156,19 +1211,25 @@ const I18N = {
   "part.headline": {en:"We orchestrate. Partners contribute what only they can.", id:"Kami mengorkestrasi. Mitra berkontribusi dengan apa yang hanya mereka bisa berikan."},
   "part.p1.label": {en:"University", id:"Universitas"},
   "part.p1.name": {en:"Academic Ecosystem", id:"Ekosistem Akademik"},
-  "part.p1.i1": {en:"Founder sourcing & early exposure", id:"Sumber founder & eksposur dini"},
-  "part.p1.i2": {en:"Academic ecosystem access", id:"Akses ekosistem akademik"},
-  "part.p1.i3": {en:"No program control or decision rights", id:"Tanpa kendali program atau hak keputusan"},
+  "part.p1.i1": {en:"Design and co-deliver incubation or entrepreneurship programs for students and alumni", id:"Merancang dan menyelenggarakan program inkubasi atau kewirausahaan untuk mahasiswa dan alumni"},
+  "part.p1.i2": {en:"Serve as mentor and coach for university-affiliated startups and early-stage ventures", id:"Berperan sebagai mentor dan coach untuk startup dan venture tahap awal yang berafiliasi dengan universitas"},
+  "part.p1.i3": {en:"Run structured ideation and validation bootcamps within campus environments", id:"Menjalankan bootcamp ideasi dan validasi terstruktur di lingkungan kampus"},
+  "part.p1.i4": {en:"Source and pipeline high-potential founders from academic ecosystems into VAXA Launchpad", id:"Mencari dan menyalurkan founder berpotensi tinggi dari ekosistem akademik ke VAXA Launchpad"},
+  "part.p1.i5": {en:"Provide guest lectures, workshops, and curriculum input on venture building and startup practice", id:"Memberikan kuliah tamu, workshop, dan masukan kurikulum tentang venture building dan praktik startup"},
   "part.p2.label": {en:"Corporate", id:"Korporasi"},
   "part.p2.name": {en:"Strategic Partners", id:"Mitra Strategis"},
-  "part.p2.i1": {en:"Capability contribution — product, market, ops", id:"Kontribusi kapabilitas — produk, pasar, operasional"},
-  "part.p2.i2": {en:"Market access & pilot opportunities", id:"Akses pasar & peluang uji coba"},
-  "part.p2.i3": {en:"Strategic execution support", id:"Dukungan eksekusi strategis"},
+  "part.p2.i1": {en:"Connect corporations with relevant startups that offer solutions to specific business problems — without the cost of building in-house", id:"Menghubungkan korporasi dengan startup yang menawarkan solusi untuk masalah bisnis spesifik — tanpa biaya membangun tim internal"},
+  "part.p2.i2": {en:"Design CSR-driven entrepreneurship programs that create measurable community and business impact", id:"Merancang program kewirausahaan berbasis CSR yang menciptakan dampak komunitas dan bisnis yang terukur"},
+  "part.p2.i3": {en:"Facilitate open innovation: corporations bring real challenges, startups bring fresh solutions", id:"Memfasilitasi inovasi terbuka: korporasi membawa tantangan nyata, startup membawa solusi segar"},
+  "part.p2.i4": {en:"Pilot testing ground — early-stage startups get corporate clients, corporates get cost-efficient R&D", id:"Pilot testing ground — startup tahap awal mendapat klien korporat, korporasi mendapat R&D yang efisien"},
+  "part.p2.i5": {en:"Co-brand and sponsor entrepreneurship initiatives aligned with corporate values and ESG goals", id:"Co-brand dan sponsori inisiatif kewirausahaan yang selaras dengan nilai korporasi dan tujuan ESG"},
   "part.p3.label": {en:"Investment", id:"Investasi"},
   "part.p3.name": {en:"Capital Partners", id:"Mitra Modal"},
-  "part.p3.i1": {en:"Capital access", id:"Akses modal"},
-  "part.p3.i2": {en:"Growth & scaling guidance", id:"Bimbingan pertumbuhan & scaling"},
-  "part.p3.i3": {en:"Follow-on funding opportunities", id:"Peluang pendanaan lanjutan"},
+  "part.p3.i1": {en:"Scout and pre-screen startups that match investor thesis, sector focus, and stage criteria", id:"Mencari dan melakukan pre-screening startup yang sesuai dengan tesis investor, fokus sektor, dan kriteria tahap"},
+  "part.p3.i2": {en:"Deliver investment-ready founders — validated, mentored, and de-risked through the VAXA pipeline", id:"Menghadirkan founder yang siap investasi — tervalidasi, dimentori, dan telah melalui pipeline VAXA"},
+  "part.p3.i3": {en:"Provide co-investment intelligence: deal flow from Tier 2 cities often missed by Jakarta-based VCs", id:"Memberikan intelijen co-investasi: deal flow dari kota Tier 2 yang sering terlewat oleh VC berbasis Jakarta"},
+  "part.p3.i4": {en:"Structure grant or soft-funding programs in partnership with VAXA for pre-seed stage ventures", id:"Menyusun program hibah atau soft-funding bermitra dengan VAXA untuk venture tahap pre-seed"},
+  "part.p3.i5": {en:"Access a curated alumni network for portfolio support, advisory roles, and follow-on opportunities", id:"Mengakses jaringan alumni terkurasi untuk dukungan portofolio, peran advisory, dan peluang follow-on"},
   "part.g1": {en:"Centralized orchestration", id:"Orkestrasi terpusat"},
   "part.g2": {en:"Standardized evaluation", id:"Evaluasi terstandardisasi"},
   "part.g3": {en:"Decentralized execution", id:"Eksekusi terdesentralisasi"},
